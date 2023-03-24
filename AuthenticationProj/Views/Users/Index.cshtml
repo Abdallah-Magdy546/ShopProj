@@ -1,0 +1,57 @@
+﻿@model IEnumerable<UserViewModel>
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Localization
+
+@inject IViewLocalizer localizer
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+}
+
+<h1>
+    @localizer["Users"]
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">@localizer["User Name"]</th>
+            <th scope="col">@localizer["Phone"]</th>
+            <th scope="col">@localizer["Gender"]</th>
+            <th scope="col">@localizer["Email"]</th>
+            <th scope="col">@localizer["Roles"]</th>
+            <th scope="col">@localizer["Action"]</th>
+
+            @*<th scope="col">Edit</th>*@
+            <th scope="col">@localizer["Delete"]</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.id</td>
+                <td>@user.UserName</td>
+                <td>@user.PhoneNum</td>
+                <td>@user.Gender</td>
+                <td>@user.Email</td>
+                <td>@string.Join(" , ",user.Roles.ToList())</td>
+                <td>
+                    <a asp-area="" asp-controller="Users" asp-action="EditUser" asp-route-id="@user.id">@localizer["Edit"]</a>
+                </td>
+                <td>
+                    <a asp-area="" asp-controller="Users" asp-action="DeleteUser" asp-route-id="@user.id">@localizer["Delete"]</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

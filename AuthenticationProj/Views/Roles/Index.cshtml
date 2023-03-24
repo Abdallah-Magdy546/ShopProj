@@ -1,0 +1,51 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<IdentityRole>
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Roles";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<h1>
+    @localizer["Roles"]
+</h1>
+<partial name="_RoleForm" model="new RoleFormViewModel()" />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">@localizer["Role Name"]</th>
+            @*<th scope="col">Edit</th>*@
+            <th scope="col">@localizer["Delete"]</th>
+            <th scope="col">@localizer["Manage Permission"]</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var Role in Model)
+        {
+            <tr>
+                <td>@Role.Id</td>
+                <td>@Role.Name</td>
+                @*<td>
+                    <a asp-area="" asp-controller="Roles" asp-action="Edit" asp-route-Name="@Role.Name" asp-route-id="@Role.Id">Edit</a>
+                </td>*@
+                <td>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Roles" asp-action="DeleteRole" asp-route-id="@Role.Id">@localizer["Delete"]</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Roles" asp-action="ManagePermission" asp-route-id="@Role.Id">@localizer["Manage Permission"]</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}*@
