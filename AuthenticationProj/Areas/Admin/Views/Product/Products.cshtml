@@ -1,0 +1,91 @@
+﻿@model PaginatedList<Product>
+
+@{
+    ViewData["Title"] = "Products";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align:center" > Cars </h1>
+
+<form asp-area="Admin" asp-controller="Product" asp-action="Products" asp-route-id="@ViewBag.SubCategoryId" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="hidden" name="name" value="@ViewBag.SubCategoryId">
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-action="Products" asp-route-id="@ViewBag.SubCategoryId" class="btn btn-primary">Back to Full List</a>
+        </p>
+    </div>
+</form>
+<a asp-action="DeleteAllProducts" asp-area="Admin" asp-controller="Product" asp-route-id="@ViewBag.SubCategoryId" class="btn btn-danger">Delete All Products In @ViewBag.SubCategoryName</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Products" asp-route-id="@ViewBag.SubCategoryId" asp-route-sortOrder="@ViewData["IdSortParm"]">ID</a>
+            </th>
+            <th>
+                <a asp-action="Products" asp-route-id="@ViewBag.SubCategoryId" asp-route-sortOrder="@ViewData["NameSortParm"]">Name</a>
+            </th>                                  
+            <th>                                   
+                <a asp-action="Products" asp-route-id="@ViewBag.SubCategoryId" asp-route-sortOrder="@ViewData["BrandSortParm"]"> Brand </a>
+            </th>                                  
+            <th>                                   
+                <a asp-action="Products" asp-route-id="@ViewBag.SubCategoryId" asp-route-sortOrder="@ViewData["ModelSortParm"]">Model</a>
+            </th>                                  
+            <th>                                   
+                <a asp-action="Products" asp-route-id="@ViewBag.SubCategoryId" asp-route-sortOrder="@ViewData["PriceSortParm"]">Price</a>
+            </th>
+            <th>Seller Name</th>
+            <th>Production Date</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <td>@product.id</td>
+                <td>@product.name</td>
+                <td>@product.brand</td>
+                <td>@product.model</td>
+                <td>@product.price</td>
+                <td>@product.SellerName</td>
+                <td>@product.ProductionDate</td>
+                <td><a asp-action="Details" asp-route-id="@product.id" class="btn btn-primary">Details</a></td>
+                <td><a asp-action="Edit" asp-route-id="@product.id" class="btn btn-warning">Edit</a></td>
+                <td><a asp-action="Delete" asp-route-id="@product.id" class="btn btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+
+<a asp-action="Products" asp-route-name="@ViewBag.SubCategoryName"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled">
+    Previous
+</a>
+<a asp-action="Products" asp-route-name="@ViewBag.SubCategoryName"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-pageNumber="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+<div>
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+    {
+        <a asp-action="Create" asp-route-SubCategoryId="@ViewBag.SubCategoryId" class="btn btn-primary">Add New Product</a>
+    }
+    |  <a asp-action="Index" class="btn btn-primary">Return To Categories</a>
+</div>

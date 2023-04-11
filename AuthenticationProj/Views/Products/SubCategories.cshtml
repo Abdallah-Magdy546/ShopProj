@@ -1,0 +1,18 @@
+﻿@model List<string>
+
+@{
+    ViewData["Title"] = "SubCategories";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align:center ">What Product Do You Need ?</h1>
+
+<div style="align-content:center" class="container mt-3">
+    @foreach (var cat in Model)
+    {
+        <a class="btn btn-primary " asp-action="Products" asp-route-name="@cat">@cat</a>
+    }
+    <div>
+    <a asp-action="Index" class=" mt-3">Return To Categories</a>
+    </div>
+</div>

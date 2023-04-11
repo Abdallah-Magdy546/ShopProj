@@ -12,6 +12,7 @@ namespace Core.Constants
         Students,
         Stock,
         Categories,
-        test
+        test,
+        SubCategories
     }
 }

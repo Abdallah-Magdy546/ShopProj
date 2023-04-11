@@ -1,0 +1,27 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<form class="form" method="post" asp-action="Create">
+    <div class="input-grup">
+        <input asp-for="name" class="form-control mt-3" placeholder="Name OF Product" required />
+        <input asp-for="brand" class="form-control mt-3" placeholder="Brand OF Product" required />
+        <input asp-for="model" class="form-control mt-3" placeholder="Model OF Product" required />
+        <input asp-for="price" class="form-control mt-3" placeholder="Price OF Product" required />
+        <input asp-for="SellerName" class="form-control mt-3" placeholder="Seller Name OF Product" required />
+        <input asp-for="ProductionDate" class="form-control mt-3" placeholder="Production Date OF Product" required />
+        <input type="hidden" asp-for="SubCategoryId" class="form-control mt-3" value="@ViewBag.SubCategoryId" placeholder="SubCategory OF Product" required />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary mt-2 ml-2">Create New Product</button> | 
+            <a asp-action="Products" asp-route-name="@ViewBag.SubCategoryName" class="btn btn-primary mt-2 ml-2">Back to List</a> | 
+            <a asp-action="Index" class="btn btn-primary mt-2 ml-2">Return To Categories</a>
+        </div>
+    </div>
+    <span asp-validation-for="name" class="text-danger"></span>
+    <span asp-validation-for="model" class="text-danger"></span>
+    <span asp-validation-for="brand" class="text-danger"></span>
+    <span asp-validation-for="ProductionDate" class="text-danger"></span>
+</form>
+

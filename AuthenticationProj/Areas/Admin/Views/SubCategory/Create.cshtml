@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form" method="post" asp-action="Create">
+    <div class="input-grup">
+        <input id="Name OF SubCategory" name="name" class="form-control" placeholder="Name OF SubCategory" required />
+        <div class="input-group">
+            <select id="Name of Category" name="CategoryName" class="form-select form-select-lg mb-3 mt-3">
+                @foreach (var cat in Model)
+                {
+                    <option>@cat.Name</option>
+                }
+            </select>
+        </div>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary mt-2">Create New SubCategory</button>
+            <a asp-action="Index" class="btn btn-primary mt-2 ml-2">Back to List</a>
+        </div>
+    </div>
+</form>

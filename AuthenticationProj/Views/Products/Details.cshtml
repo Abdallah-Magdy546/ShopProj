@@ -1,0 +1,53 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "product";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>
+    The Product Details
+</h1>
+
+<div>
+    <h4>Product</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NAME</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Price</th>
+                <th>Seller Name</th>
+                <th>Production Date</th>
+                <th>Add To Cart</th>
+                <th>Buy Now</th>
+                @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                {
+                    <th>Edit</th>
+                    <th>Delete</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.name</td>
+                <td>@Model.brand</td>
+                <td>@Model.model</td>
+                <td>@Model.price</td>
+                <td>@Model.SellerName</td>
+                <td>@Model.ProductionDate</td>
+                <td><a class="btn btn-primary" asp-action="AddToCart" asp-route-ProductId="@Model.id" asp-route-name="@ViewBag.SubCategoryName">Add To Cart</a></td>
+                <td><a asp-action="Buy" asp-route-id="@Model.id" class="btn btn-primary">Buy Now</a></td>
+                @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+                {
+                    <td><a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-primary">Edit</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@Model.id" class="btn btn-primary">Delete</a></td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Products" class="btn btn-primary" asp-route-name="@ViewBag.SubCategoryName">Back to List</a>  |
+    <a asp-action="Index" class="btn btn-primary">Return To Categories</a>
+</div>

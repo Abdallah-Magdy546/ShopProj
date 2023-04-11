@@ -1,0 +1,29 @@
+﻿@model List<OrderViewModel>
+
+@{
+    ViewData["Title"] = "orders";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<h1 style="text-align:center">YOUR ORDERS</h1>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>Quantity</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.ProductName</td>
+                <td>@product.Quantity</td>
+                <td>@product.Status</td>
+            </tr>
+        }
+    </tbody>
+
+</table>

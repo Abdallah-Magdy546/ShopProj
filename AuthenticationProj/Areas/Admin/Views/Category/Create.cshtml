@@ -1,0 +1,16 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form" method="post" asp-action="Create">
+    <div class="input-grup">
+        <input asp-for="Name" class="form-control" placeholder="Name OF Category" required />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary mt-2">Create New Category</button>
+            <a asp-action="Index" class="btn btn-primary mt-2 ml-2">Back to List</a>
+        </div>
+    </div>
+    <span asp-validation-for="Name" class="text-danger"></span>
+</form>

@@ -1,0 +1,40 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align:center">Proiduct Details</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Seller Name</th>
+            <th>Production Date</th>
+            <th>SubCategory</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.id</td>
+            <td>@Model.name</td>
+            <td>@Model.brand</td>
+            <td>@Model.model</td>
+            <td>@Model.price</td>
+            <td>@Model.SellerName</td>
+            <td>@Model.ProductionDate</td>
+            <td>@ViewBag.SubCategoryName</td>
+            <td><a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-warning">Edit</a></td>
+            <td><a asp-action="Delete" asp-route-id="@Model.id" class="btn btn-danger">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
+<a asp-action="Products" class="btn btn-primary" asp-route-id="@Model.SubCategoryId">Back To List</a>
+<a asp-action="Index" class="btn btn-primary">Back To Categories</a>

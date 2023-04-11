@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Payment";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+
+}
+
+<h1>Make a Payment</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form id="payment-form" method="post" action="@Url.Action("Charge", "Payment")">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" class="form-control" placeholder="@ViewBag.Total" value="@ViewBag.Total" id="amount" name="amount" readonly required>
+            </div>
+            <div class="form-group">
+                <label for="card-element">Credit or Debit Card</label>
+                <div id="card-element" class="form-control"></div>
+                <div id="card-errors" role="alert"></div>
+            </div>
+            <button id="submit-button" class="btn btn-primary mt-2">Pay Now</button>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        var stripe = Stripe('pk_test_51MvKVDEIEh78QVF8nELxofm5dklg8xHzakkYv8Yl48heO7xBeSn7tpNSJ8nE3gFW965plCKdvNuwIHaHdegcDWxD00acSyblim');
+        var elements = stripe.elements();
+        var cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        cardElement.on('change', function (event) {
+            var displayError = document.getElementById('card-errors');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+            } else {
+                displayError.textContent = '';
+            }
+        });
+
+        var form = document.getElementById('payment-form');
+        var submitButton = document.getElementById('submit-button');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            submitButton.disabled = true;
+            stripe.createToken(cardElement).then(function (result) {
+                if (result.error) {
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                    submitButton.disabled = false;
+                } else {
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+
+        function stripeTokenHandler(token) {
+            var form = document.getElementById('payment-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+            form.submit();
+        }
+    </script>
+}

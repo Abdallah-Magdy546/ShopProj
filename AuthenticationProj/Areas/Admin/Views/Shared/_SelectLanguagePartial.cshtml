@@ -1,0 +1,40 @@
+﻿@*@using Microsoft.AspNetCore.Identity
+@using AuthenticationProj
+@using AuthenticationProj.Data
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+@namespace AuthenticationProj.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers*@
+
+
+
+
+
+
+
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@inject IViewLocalizer localizer
+@inject IOptions<RequestLocalizationOptions> locOptions
+
+@{
+    var requstCulture = Context.Features.Get<IRequestCultureFeature>();
+    var cultureItems = locOptions.Value.SupportedUICultures
+    .Select(c => new SelectListItem { Value = c.Name, Text = c.NativeName })
+    .ToList();
+    var returnUrl = string.IsNullOrEmpty(Context.Request.Path) ? "~/" : $"~{Context.Request.Path.Value}";
+}
+
+<div title="@localizer["Request culture provider:"] @requstCulture?.Provider?.GetType().Name">
+    <form id="SelectLanguage" method="post" asp-controller="SelectLanguage" asp-action="Index" asp-route-ReturnUrl="@returnUrl">
+        <select name="Culture" onchange="this.form.submit();" asp-for="@requstCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
+
+        </select>
+
+    </form>
+</div>

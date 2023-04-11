@@ -1,0 +1,39 @@
+﻿@model CategoriesAndSubCategoriesForm
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1>
+    The Category Details
+</h1>
+
+<div>
+    <h4>Category</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>Sub Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>@Model.id</th>
+                <th>@Model.name</th>
+                <td>
+                    @foreach (var SubCat in Model.SubCats)
+                    {
+                        <h5>@SubCat</h5>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

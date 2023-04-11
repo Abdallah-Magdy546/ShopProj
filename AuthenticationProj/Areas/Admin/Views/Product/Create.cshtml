@@ -1,0 +1,50 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_layout.cshtml";
+}
+
+
+<form class="form" method="post" asp-action="Create">
+    <div class="row">
+        <label asp-for="name">Name</label>
+        <input asp-for="name" class="form-control" />
+    </div>
+    <div class="row">
+        <label asp-for="brand">Brand</label>
+        <input asp-for="brand" class="form-control" />
+    </div>
+    <div class="row">
+        <label asp-for="model">Model</label>
+        <input asp-for="model" class="form-control" />
+    </div>
+    <div class="row">
+        <label asp-for="price">Price</label>
+        <input asp-for="price" class="form-control" />
+    </div>
+    <div class="row">
+        <label asp-for="SellerName">Seller Name</label>
+        <input asp-for="SellerName" class="form-control" />
+    </div>
+    <div class="row">
+        <label asp-for="ProductionDate">Production Date</label>
+        <input asp-for="ProductionDate" class="form-control" />
+    </div>
+    <div class="row">
+        <label for="SubCAtegoryName" >SubCategory Name</label>
+        <select id="SubCAtegoryName" name="SubCategoryName" class="form-select form-select-lg mb-3 mt-1" value="@ViewBag.SubCategoryName">
+            @foreach (var SubCategory in ViewBag.SubCategoryiesNames)
+            {
+                <option>
+                    @SubCategory
+                </option>
+            }
+        </select>
+    </div>
+    <div class="input-group-append">
+        <button type="submit" class="btn btn-primary m-2">Create Product</button>   | 
+        <a asp-action="Products" asp-route-id="@ViewBag.SubCategoryId" class="btn btn-primary m-2">Back to List</a>   |
+        <a asp-action="Index" class="btn btn-primary m-2">Return To Categories</a>
+
+    </div>
+</form>

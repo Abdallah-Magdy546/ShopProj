@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\abdal\\Desktop\\TestProj\\AuthenticationProj\\AuthenticationProj.csproj": {}
+    "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\AuthenticationProj\\AuthenticationProj.csproj": {}
   },
   "projects": {
-    "C:\\Users\\abdal\\Desktop\\TestProj\\AuthenticationProj\\AuthenticationProj.csproj": {
+    "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\AuthenticationProj\\AuthenticationProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abdal\\Desktop\\TestProj\\AuthenticationProj\\AuthenticationProj.csproj",
+        "projectUniqueName": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\AuthenticationProj\\AuthenticationProj.csproj",
         "projectName": "AuthenticationProj",
-        "projectPath": "C:\\Users\\abdal\\Desktop\\TestProj\\AuthenticationProj\\AuthenticationProj.csproj",
+        "projectPath": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\AuthenticationProj\\AuthenticationProj.csproj",
         "packagesPath": "C:\\Users\\abdal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abdal\\Desktop\\TestProj\\AuthenticationProj\\obj\\",
+        "outputPath": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\AuthenticationProj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\abdal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -96,14 +96,14 @@
         }
       }
     },
-    "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj": {
+    "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\abdal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\obj\\",
+        "outputPath": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\abdal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -139,6 +139,10 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.15, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
             }
           },
           "imports": [
@@ -161,14 +165,14 @@
         }
       }
     },
-    "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\abdal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\abdal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -185,8 +189,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj"
+              "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\abdal\\Desktop\\AuthenticationProj\\Core\\Core.csproj"
               }
             }
           }

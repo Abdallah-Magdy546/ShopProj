@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\Infrastructure.csproj": {}
+    "D:\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj": {
+    "D:\\AuthenticationProj\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj",
+        "projectUniqueName": "D:\\AuthenticationProj\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj",
+        "projectPath": "D:\\AuthenticationProj\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\abdal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\obj\\",
+        "outputPath": "D:\\AuthenticationProj\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\abdal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "HelperMethods.HTMLHelper": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
             "Microsoft.AspNetCore.Authorization": {
               "target": "Package",
               "version": "[6.0.15, )"
@@ -47,6 +55,22 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.15, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Moq.EntityFramework.Helpers": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Moq.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.1.4, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[41.13.0, )"
             }
           },
           "imports": [
@@ -69,14 +93,14 @@
         }
       }
     },
-    "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\abdal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Infrastructure\\obj\\",
+        "outputPath": "D:\\AuthenticationProj\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\abdal\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -93,8 +117,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\abdal\\Desktop\\TestProj\\Core\\Core.csproj"
+              "D:\\AuthenticationProj\\Core\\Core.csproj": {
+                "projectPath": "D:\\AuthenticationProj\\Core\\Core.csproj"
               }
             }
           }
@@ -109,6 +133,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "HelperMethods.HTMLHelper": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.9, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.15, )"
@@ -116,6 +148,18 @@
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.15, )"
+            },
+            "Moq.EntityFramework.Helpers": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Moq.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.1.4, )"
+            },
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[41.13.0, )"
             }
           },
           "imports": [

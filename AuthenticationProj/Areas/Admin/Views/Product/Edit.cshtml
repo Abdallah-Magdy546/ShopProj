@@ -1,0 +1,49 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" asp-action="Edit">
+    <div class="row">
+        <label asp-for="name"></label>
+        <input asp-for="name" name="name" class="form-control mt-1" required />
+    </div>
+    <div class="row">
+        <label asp-for="brand"></label>
+        <input asp-for="brand" name="brand" class="form-control mt-1" />
+    </div>
+    <div class="row">
+        <label asp-for="model"></label>
+        <input asp-for="model" name="model" class="form-control mt-1" />
+    </div><div class="row">
+        <label asp-for="price"></label>
+        <input asp-for="price" name="price" class="form-control mt-1" />
+    </div><div class="row">
+        <label asp-for="SellerName"></label>
+        <input asp-for="SellerName" name="SellerName" class="form-control mt-1" />
+    </div><div class="row">
+        <label asp-for="ProductionDate"></label>
+        <input asp-for="ProductionDate" name="ProductionDate" class="form-control mt-1" />
+    </div>
+    <div class="row">
+        <label for="SubCategoryName">Subcategory Name</label>
+        <select id="SubCategoryName" name="SubCategoryName" class="form-select form-select-lg mb-3 mt-1" placeholder="@ViewBag.SubCategoryName">
+            @foreach (var SubCatName in ViewBag.AllSubCategoriesNames)
+            {
+                <option>@SubCatName</option>
+            }
+        </select>
+    </div>
+        <input type="hidden" name="id" value="@Model.id" />
+        <input type="hidden" name="SubCategoryId" value="@Model.SubCategoryId" />
+    
+    <div>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary mt-2">Edit The Product</button> |
+            <a asp-action="Products" asp-route-id="@Model.SubCategoryId" class="btn btn-primary mt-2 ml-2">Back to List</a> |
+            <a asp-action="Index" class="btn btn-primary mt-2 ml-2">Return To Categories</a>
+        </div>
+    </div>
+
+</form>

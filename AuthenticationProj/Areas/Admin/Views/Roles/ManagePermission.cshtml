@@ -1,0 +1,61 @@
+﻿@model PermissionsFormViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer localizer
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.rtl.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+
+@{
+    ViewData["Title"] = "EditPermissions";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<form asp-action="ManagePermission" method="post" >
+    <div class="card mt-4">
+        <div class="card-header">
+            <h2>
+                @Model.RoleName
+            </h2>
+            @localizer["Add/Remove Permissions"]
+        </div>
+        <div class="card-body">
+            <input type="hidden" asp-for="RoleId" />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>@localizer["Module"]</th>
+                        <th>@localizer["Permission"]</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.RoleClaims.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <div class="form-check m-1">
+                                    <input type="hidden" asp-for="@Model.RoleClaims[i].DisplayValue" />
+                                    <input asp-for="@Model.RoleClaims[i].IsSelected" calss="form-check-input" />
+                                    <label asp-for="@Model.RoleClaims[i].IsSelected" class="form-check-label">
+                                        @Model.RoleClaims[i].DisplayValue
+                                    </label>
+                                </div>
+                            </td>
+                            <td>@Model.RoleClaims[i].DisplayValue.Split('.')[1]</td>
+                            <td>@Model.RoleClaims[i].DisplayValue.Split('.')[2]</td>
+                        </tr>
+                        
+                    }
+                </tbody>
+            </table>
+            
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">@localizer["Save"]</button>
+            <a asp-action="Index" class="btn btn-secondary">@localizer["Cancel"]</a>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,45 @@
+﻿@model List<CartViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align:center">Cart</h1>
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Product price</th>
+            <th>Product Quantity</th>
+            <th>Total Price</th>
+            <th>Adding more product</th>
+            <th>Reduce the amount</th>
+            <th>Delete This Product</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.price</td>
+                <td>@item.Quantity</td>
+                <td>@item.TotalProductPrice</td>
+                <td><a class="btn btn-primary" asp-action="AddingMoreProduct" asp-controller="Cart" asp-route-ProductId="@item.ProductId">Adding More Product</a></td>
+                <td><a class="btn btn-primary" asp-action="ReduceAmount" asp-controller="Cart" asp-route-ProductId="@item.ProductId">Remove One Product</a></td>
+                <td><a class="btn btn-primary" asp-action="DeleteProduct" asp-controller="Cart" asp-route-ProductId="@item.ProductId">Delete This Products</a></td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total Price</td>
+            <td>@ViewBag.TotalPrice</td>
+        </tr>
+    </tfoot>
+</table>
+<a class="btn btn-primary" asp-action="Index" asp-controller="Payment" asp-route-Total="@ViewBag.TotalPrice">Checkout</a>
+<a class="btn btn-primary" asp-action="Index" asp-controller="Products">Back To Products</a>
+<a class="btn btn-danger right" asp-action="ClearTheCart" asp-controller="Cart">Clear The Cart</a>

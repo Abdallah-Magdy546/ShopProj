@@ -1,0 +1,17 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<form class="form" method="post" asp-action="Edit">
+    <div class="input-grup">
+        <input asp-for="id" type="hidden" value="@Model.id" />
+        <input asp-for="Name" class="form-control" placeholder="@Model.Name" required />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary mt-2">Edit The Category</button>
+            <a asp-action="Index" class="btn btn-primary mt-2 ml-2" >Back to List</a>
+        </div>
+    </div>
+    <span asp-validation-for="Name" class="text-danger"></span>
+</form>

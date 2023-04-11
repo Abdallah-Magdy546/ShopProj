@@ -1,0 +1,16 @@
+﻿@model List<SubCategory>
+
+@{
+    ViewData["Title"] = "SubCategories";
+    Layout = "~/Areas/Admin/Views/Shared/_layout.cshtml";
+}
+
+<h1 style="text-align:center"> SUBCATEGORIES </h1>
+@foreach(var SubCat in Model)
+{
+    <a asp-action="Products" asp-area="Admin" asp-controller="Product" asp-route-id="@SubCat.id" class="btn btn-primary">@SubCat.Name</a>
+}
+<div>
+    <a asp-action="Index" asp-area="Admin" asp-controller="Product" class="btn btn-primary mt-2">Back To Categories</a>
+    <a asp-action="Index" asp-area="Admin" asp-controller="Home" class="btn btn-primary mt-2">Back To Home</a>
+</div>

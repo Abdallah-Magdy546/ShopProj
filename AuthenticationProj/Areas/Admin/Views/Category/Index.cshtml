@@ -1,0 +1,50 @@
+﻿@model List<AllCategoriesAndSubCategoriesForm>
+@{
+    ViewData["Title"] = "Categories";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h1>
+    Categories
+</h1>
+<a asp-action="Create">Create New</a>
+
+<table class="table table-stripped">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>Sub Categories</th>
+            <th>Details</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cat in Model)
+        {
+         <tr>
+            <td>@cat.id</td>
+            <td>@cat.name</td>
+
+                <td>
+                    @foreach (var SubCategory in cat.SubCatsNames)
+                    {
+                        <h5>@SubCategory</h5>
+                    }
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@cat.id">Details</a>
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@cat.id">Edit</a> 
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Delete" asp-route-id="@cat.id">Delete</a>
+                </td>
+                
+        </tr>
+        }
+    </tbody>
+
+</table>
+

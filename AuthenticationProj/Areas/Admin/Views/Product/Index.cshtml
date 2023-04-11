@@ -1,0 +1,11 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Categories";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="text-align:center"> CATEGORIES </h1>
+@foreach(var cat in Model)
+{
+    <a asp-area="Admin" asp-action="SubCategory" asp-route-id="@cat.id" class="btn btn-primary">@cat.Name</a>
+}

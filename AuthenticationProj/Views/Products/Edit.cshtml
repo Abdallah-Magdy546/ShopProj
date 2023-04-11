@@ -1,0 +1,28 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<form class="form" method="post" asp-action="Edit">
+    <div class="input-grup">
+        <input asp-for="name" class="form-control mt-3" placeholder="@Model.name" required />
+        <input asp-for="brand" class="form-control mt-3" placeholder="@Model.brand" required />
+        <input asp-for="model" class="form-control mt-3" placeholder="@Model.model" required />
+        <input asp-for="price" class="form-control mt-3" placeholder="@Model.price" required />
+        <input asp-for="SellerName" class="form-control mt-3" placeholder="@Model.SellerName" required />
+        <input asp-for="ProductionDate" class="form-control mt-3" placeholder="@Model.ProductionDate" required />
+        <input type="hidden" asp-for="SubCategoryId" class="form-control mt-3" value="@Model.SubCategoryId" placeholder="SubCategory OF Product" required />
+        <input type="hidden" asp-for="id" class="form-control mt-3" value="@Model.id" placeholder="Id OF Product" required />
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-primary mt-2">Edit The Product</button> | 
+            <a asp-action="Products" asp-route-name="@ViewBag.SubCategoryName" class="btn btn-primary mt-2 ml-2">Back to List</a> | 
+            <a asp-action="Index" class="btn btn-primary mt-2 ml-2">Return To Categories</a>
+        </div>
+    </div>
+    <span asp-validation-for="name" class="text-danger"></span>
+    <span asp-validation-for="model" class="text-danger"></span>
+    <span asp-validation-for="brand" class="text-danger"></span>
+    <span asp-validation-for="ProductionDate" class="text-danger"></span>
+</form>
+

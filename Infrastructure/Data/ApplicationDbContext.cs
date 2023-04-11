@@ -3,7 +3,7 @@ using Core.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace AuthenticationProj.Data
+namespace Infrastructure.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -18,5 +18,10 @@ namespace AuthenticationProj.Data
         }
 
         public DbSet<student> students { get; set; }
+        public DbSet<Category> categories { get; set; }
+        public DbSet<SubCategory> subcategories { get; set; }
+        public DbSet<Product> products { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Order> orders { get; set; }
     }
 }
