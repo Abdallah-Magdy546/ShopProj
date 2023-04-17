@@ -31,6 +31,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td colspan="3">
+                            <div class="form-check m-1">
+                                <input type="checkbox" id="selectAll" class="form-check-input" />
+                                <label for="selectAll" class="form-check-label">@localizer["Select All"]</label>
+                            </div>
+                        </td>
+                    </tr>
                     @for (int i = 0; i < Model.RoleClaims.Count; i++)
                     {
                         <tr>
@@ -59,3 +67,15 @@
         </div>
     </div>
 </form>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~\lib\jquery\dist\jquery.min.js"></script>
+<script src="~\lib\jquery\dist\jquery.js"></script>
+<script>
+    $(function () {
+        $('#selectAll').click(function () {
+            $('input[type="checkbox"]').prop('checked', this.checked);
+        });
+    });
+</script>

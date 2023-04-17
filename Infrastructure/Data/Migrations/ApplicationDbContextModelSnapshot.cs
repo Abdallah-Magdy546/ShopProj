@@ -127,6 +127,10 @@ namespace AuthenticationProj.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("Photo")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.HasKey("id");
 
                     b.ToTable("categories");
@@ -167,6 +171,10 @@ namespace AuthenticationProj.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
+                    b.Property<byte[]>("Photo")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<DateTime>("ProductionDate")
                         .HasColumnType("datetime2");
 
@@ -201,27 +209,6 @@ namespace AuthenticationProj.Data.Migrations
                     b.ToTable("products");
                 });
 
-            modelBuilder.Entity("Core.Entities.student", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
-
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("students");
-                });
-
             modelBuilder.Entity("Core.Entities.SubCategory", b =>
                 {
                     b.Property<int>("id")
@@ -237,6 +224,10 @@ namespace AuthenticationProj.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<byte[]>("Photo")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
 
                     b.HasKey("id");
 

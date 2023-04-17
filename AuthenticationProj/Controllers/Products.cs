@@ -10,6 +10,7 @@ using static Core.Constants.Permissions;
 
 namespace ShopProj.Controllers
 {
+    [AllowAnonymous]
     public class ProductsController : Controller
     {
         private readonly ICategoryInterface _categories;
@@ -25,19 +26,22 @@ namespace ShopProj.Controllers
             _products = products;
             _cart = cart;
         }
-        [Authorize(Permissions.Products.View)]
         public async Task<IActionResult> Index()
         {
             var result = await _categories.GetAllCategories();
             return View(result);
         }
-        [Authorize(Permissions.Products.View)]
         public async Task<IActionResult> SubCategories(int id )
         {
             var result = await _categories.GetAllSubCategoriesById(id);
-            return View(result);
+            List<SubCategory> subCategories = new List<SubCategory>();
+            foreach(var subCategory in result )
+            {
+                var Subcat = await _subCategories.GetSubCategoryByName(subCategory);
+                subCategories.Add(Subcat);
+            }
+            return View(subCategories);
         }
-        [Authorize(Permissions.Products.View)]
         public async Task<IActionResult> Products(string name , string sortOrder , string searchString, int? pageNumber, string currentFilter)
         {
             var SubCategory = await _subCategories.GetSubCategoryByName(name);
@@ -97,7 +101,6 @@ namespace ShopProj.Controllers
             int PageSize = 10;
             return View(PaginatedList<Product>.CreateAsync(products, pageNumber ?? 1, PageSize));
         }
-        [Authorize(Permissions.Products.View)]
         public async Task<IActionResult> Details(int id)
         {
             var Product = await _products.GetProductById(id);
@@ -114,80 +117,6 @@ namespace ShopProj.Controllers
                 return RedirectToAction("Products", new { name = name });
             }
             return BadRequest();
-        }
-        [Authorize(Permissions.Products.Create)]
-        public async Task<IActionResult> Create(int SubCategory, string SubCategoryName)
-        {
-            ViewBag.SubCategoryId = SubCategory;
-            @ViewBag.SubCategoryName = SubCategoryName;
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Permissions.Products.Create)]
-        public async Task<IActionResult> Create(string name, string model, string brand, DateTime ProductionDate,
-            int SubCategoryId, string SellerName, float price)
-        {
-            var product = new Product
-            {
-                name = name,
-                brand = brand,
-                ProductionDate = ProductionDate,
-                model = model,
-                SubCategoryId = SubCategoryId,
-                price = price,
-                SellerName = SellerName
-            };
-            var SubCategory = await _subCategories.GetSubCategoryById(SubCategoryId);
-            var SubCategoryName = SubCategory.Name;
-            await _products.AddProduct(product);
-            return RedirectToAction("Products", new { name = SubCategoryName });
-            //return RedirectToAction("Index");
-        }
-        [Authorize(Permissions.Products.Edit)]
-        public async Task<IActionResult> Edit(int id)
-        {
-            var result = await _products.GetProductById(id);
-            var SubCategoryId = result.SubCategoryId;
-            var SubCategory = await _subCategories.GetSubCategoryById(SubCategoryId);
-            ViewBag.SubCategoryName = SubCategory.Name;
-            return View(result);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Permissions.Products.Edit)]
-        public async Task<IActionResult> Edit(int id,string name, string model, string brand, DateTime ProductionDate,
-            int SubCategoryId, string SellerName, float price)
-        {
-            var product = new Product
-            {
-                id=id,
-                name= name,
-                brand=brand,
-                ProductionDate = ProductionDate,
-                model=model,
-                SubCategoryId = SubCategoryId,
-                SellerName= SellerName,
-                price=price
-            };
-            bool result = await _products.EditProduct(product);
-            var SubCategory = await _subCategories.GetSubCategoryById(SubCategoryId);
-            if (result==true) 
-            {
-                return RedirectToAction("Products", new { name = SubCategory.Name });
-            }
-            return NotFound();
-
-        }
-        [Authorize(Permissions.Products.Delete)]
-        public async Task<IActionResult> Delete (int id)
-        {   
-            var product = await _products.GetProductById (id);
-            var SubCategoryId = product.SubCategoryId;
-            var SubCategory = await _subCategories.GetSubCategoryById(SubCategoryId);
-            var SubCategoryName = SubCategory.Name;
-            await _products.DeleteProduct(id);
-            return RedirectToAction("Products",new {name =SubCategoryName});
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using AuthenticationProj.Models;
-using Core.Entities;
 using Core.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -8,6 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Infrastructure.Helpers;
+using Core.ViewModel;
 
 namespace Infrastructure.Data.Repositories
 {

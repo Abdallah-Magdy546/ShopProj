@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Diu7ELlXoeWXxCfcAk/OZnhynFP+I4Fy7VUYxk9IDfeHUXU5csNFQdYWs/mSjQKutkuGvKIT4ud9cH/+HZDW4g==",
+  "dgSpecHash": "svAXbVhtHn9xwngiH8M4kvWdVROuNjBVOEyHdfFOAGQ6RCAlVZRsrABQBe7B1RDZI14xGAy0xKfu9qUbl1bgqQ==",
   "success": true,
   "projectFilePath": "D:\\AuthenticationProj\\Core\\Core.csproj",
   "expectedPackageFiles": [
@@ -30,6 +30,7 @@
     "C:\\Users\\abdal\\.nuget\\packages\\microsoft.aspnetcore.routing\\2.2.0\\microsoft.aspnetcore.routing.2.2.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\2.2.0\\microsoft.aspnetcore.routing.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
+    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.crm.sdk.proxy.2015\\7.1.0\\microsoft.crm.sdk.proxy.2015.7.1.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\2.1.0\\microsoft.dotnet.platformabstractions.2.1.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.15\\microsoft.entityframeworkcore.6.0.15.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.15\\microsoft.entityframeworkcore.abstractions.6.0.15.nupkg.sha512",
@@ -55,6 +56,9 @@
     "C:\\Users\\abdal\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\microsoft.web.infrastructure\\1.0.0\\microsoft.web.infrastructure.1.0.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
+    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.xrm.client.2015\\7.0.1\\microsoft.xrm.client.2015.7.0.1.nupkg.sha512",
+    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.xrm.sdk.2015\\7.1.0.1085\\microsoft.xrm.sdk.2015.7.1.0.1085.nupkg.sha512",
+    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.xrm.sdk.deployment.2015\\7.0.1\\microsoft.xrm.sdk.deployment.2015.7.0.1.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\moq\\4.18.1\\moq.4.18.1.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\moq.entityframework.helpers\\1.0.0\\moq.entityframework.helpers.1.0.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\moq.entityframeworkcore\\6.0.1.4\\moq.entityframeworkcore.6.0.1.4.nupkg.sha512",
@@ -100,7 +104,10 @@
     "C:\\Users\\abdal\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\abdal\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.12\\microsoft.windowsdesktop.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.12\\microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
+    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.12\\microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512"
   ],
   "logs": [
     {
@@ -157,8 +164,48 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
+      "message": "Package 'Microsoft.Crm.Sdk.Proxy.2015 7.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Crm.Sdk.Proxy.2015",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
       "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Web.Infrastructure",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Xrm.Client.2015 7.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Xrm.Client.2015",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Xrm.Sdk.2015 7.1.0.1085' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Xrm.Sdk.2015",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Xrm.Sdk.Deployment.2015 7.0.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Xrm.Sdk.Deployment.2015",
       "targetGraphs": [
         "net6.0"
       ]

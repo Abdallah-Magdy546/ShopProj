@@ -10,7 +10,7 @@ public class PaymentController : Controller
     private readonly ICartInterface _cart;
     private readonly IOrderInterface _order;
 
-    public PaymentController(ICartInterface cart , IOrderInterface order)
+    public PaymentController(ICartInterface cart, IOrderInterface order)
     {
         _cart = cart;
         _order = order;
@@ -39,7 +39,7 @@ public class PaymentController : Controller
         var service = new ChargeService();
         Charge charge = await service.CreateAsync(options);
 
-        if (charge.Status=="succeeded")
+        if (charge.Status == "succeeded")
         {
             var UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var cart = await _cart.GetAllCartItems(UserId);
@@ -49,8 +49,8 @@ public class PaymentController : Controller
                 {
                     UserId = UserId,
                     ProductId = item.ProductId,
-                    Quantity = item.Quantity, 
-                    status="Pinding"
+                    Quantity = item.Quantity,
+                    status = "Pinding"
                 };
                 await _order.AddingNewOrder(order);
                 await _cart.DeleteItemFromCart(item.ProductId, item.UserId);

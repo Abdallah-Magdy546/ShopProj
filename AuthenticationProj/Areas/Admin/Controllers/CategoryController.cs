@@ -6,6 +6,7 @@ using Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace ShopProj.Areas.Admin.Controllers
 {
@@ -27,17 +28,15 @@ namespace ShopProj.Areas.Admin.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.Category'  is null.");
             }
-            //Dictionary<int, List<string>> SubCategories = new Dictionary<int, List<string>>();
-            //SubCategories = await _categories.GetAllSubCategories();
             var result = new List<AllCategoriesAndSubCategoriesForm>();
             foreach (var cat in categories)
             {
-                result.Add
-                (new AllCategoriesAndSubCategoriesForm
+                result.Add (new AllCategoriesAndSubCategoriesForm
                 {
                     id = cat.id,
                     name = cat.Name,
-                    SubCatsNames = _SubCategories.GetAllSubCategoriesNamesByCategoryId(cat.id).Result.ToList()
+                    SubCatsNames = _SubCategories.GetAllSubCategoriesNamesByCategoryId(cat.id).Result.ToList(),
+                    Photo=cat.Photo
                 });
 
             }
@@ -52,11 +51,15 @@ namespace ShopProj.Areas.Admin.Controllers
         {
             var category = await _categories.GetCategorieById(id);
             var SubCats = await _categories.GetAllSubCategoriesById(id);
+            var SubCategories = await _SubCategories.GetAllSubCategoriesByCategoryId(category.id);
+            ViewBag.NumOfSubCategory = SubCategories.Count();
             var result = new CategoriesAndSubCategoriesForm
             {
                 id = id,
                 name = category.Name,
-                SubCats = SubCats
+                SubCats = SubCats,
+                Photo=category.Photo
+                
             };
             return View(result);
         }
@@ -72,9 +75,22 @@ namespace ShopProj.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Permissions.Categories.Create)]
-        public async Task<ActionResult> Create(string name)
+        public async Task<ActionResult> Create(string name , IFormFile Photo)
         {
-            await _categories.AddCategory(name);
+            if (Photo == null)
+            {
+                return BadRequest("Photo parameter is null");
+            }
+            var category = new Category
+            {
+                Name = name
+            };
+            using (var memoryStream = new MemoryStream())
+            {
+                Photo.CopyTo(memoryStream);
+                category.Photo = memoryStream.ToArray();
+            }
+            await _categories.AddCategory(category);
 
             return RedirectToAction(nameof(Index));
         }
@@ -91,13 +107,19 @@ namespace ShopProj.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Permissions.Categories.Edit)]
-        public async Task<ActionResult> Edit(int id, string name)
+        public async Task<ActionResult> Edit(int id, string name, IFormFile Photo)
         {
+           
             var category = new Category
             {
                 id = id,
                 Name = name
             };
+            using (var memoryStream = new MemoryStream())
+            {
+                Photo.CopyTo(memoryStream);
+                category.Photo = memoryStream.ToArray();
+            }
             await _categories.EditCategory(category);
             return RedirectToAction(nameof(Index));
         }
@@ -105,15 +127,16 @@ namespace ShopProj.Areas.Admin.Controllers
         [Authorize(Permissions.Categories.Delete)]
         public async Task<ActionResult> Delete(int id)
         {
-            try
+            
+          var result =  await _categories.DeleteCategory(id);
+            if (result == true)
             {
-                await _categories.DeleteCategory(id);
+                await _SubCategories.DeleteSubCategoriesByCategroyId(id);
                 return RedirectToAction(nameof(Index));
             }
-            catch (Exception ex)
-            {
-                return NotFound();
-            }
+            return BadRequest();
+
+
         }
     }
 }

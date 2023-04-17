@@ -27,5 +27,7 @@ namespace Core.Entities
         public float price { get; set; }
         [Required,StringLength(50)]
         public String SellerName { get; set; }
+        [Required]
+        public byte[] Photo { get; set; }
     }
 }

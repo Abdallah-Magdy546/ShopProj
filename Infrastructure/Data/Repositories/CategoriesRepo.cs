@@ -36,14 +36,10 @@ namespace Infrastructure.Data.Repositories
             return await _context.categories.FindAsync(id);
         }
 
-        public async Task<bool> AddCategory(string name )
+        public async Task<bool> AddCategory(Category category )
         {
             
-            var category = new Category
-            {
-                Name = name
-            };
-            var cat = await _context.categories.Where(c => c.Name == name).FirstOrDefaultAsync();
+            var cat = await _context.categories.Where(c => c.Name == category.Name).FirstOrDefaultAsync();
             if ( cat != null)
             {
                 return false;
@@ -64,7 +60,6 @@ namespace Infrastructure.Data.Repositories
             _context.categories.Remove(category);
             await _context.SaveChangesAsync();
             return true;
-                
         }
 
         public async Task<bool> EditCategory(Category category)
@@ -87,21 +82,6 @@ namespace Infrastructure.Data.Repositories
             return category;
         }
 
-        //public async Task<bool> AddingSubCategoryToTheCategory(int categoryId, int SubCategoryId)
-        //{
-        //    var Category = await _context.categories.Where(c=>c.id==categoryId).FirstOrDefaultAsync();
-        //    //var SubCategory = await _context.subcategories.Where(c => c.id == SubCategoryId).FirstOrDefaultAsync();
-        //    if (Category != null)
-        //    {
-        //        //var subCategory = await _context.categoriesAndSubCategories.FindAsync(SubCategoryId);
-        //        //if (subCategory != null) { return false; }
-        //        var CategoriesAndSubCategories = new CategoriesAndSubCategories { CategoryId=categoryId, SubCategoryId=SubCategoryId };
-        //        await _context.categoriesAndSubCategories.AddAsync(CategoriesAndSubCategories);
-        //        await _context.SaveChangesAsync();
-        //        return true;
-        //    }
-        //    return false;   
-        //}
 
         public async Task<List<string>> GetAllSubCategoriesById(int id)
         {

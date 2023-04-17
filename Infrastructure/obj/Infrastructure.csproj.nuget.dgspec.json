@@ -60,6 +60,18 @@
               "target": "Package",
               "version": "[2.2.5, )"
             },
+            "Microsoft.Crm.Sdk.Proxy.2015": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
+            "Microsoft.Xrm.Client.2015": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.Xrm.Sdk.2015": {
+              "target": "Package",
+              "version": "[7.1.0.1085, )"
+            },
             "Moq.EntityFramework.Helpers": {
               "target": "Package",
               "version": "[1.0.0, )"
@@ -84,12 +96,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.12, 6.0.12]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.12, 6.0.12]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.12, 6.0.12]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -145,9 +171,21 @@
               "target": "Package",
               "version": "[6.0.15, )"
             },
+            "Microsoft.Crm.Sdk.Proxy.2015": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.15, )"
+            },
+            "Microsoft.Xrm.Client.2015": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.Xrm.Sdk.2015": {
+              "target": "Package",
+              "version": "[7.1.0.1085, )"
             },
             "Moq.EntityFramework.Helpers": {
               "target": "Package",
@@ -173,12 +211,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.12, 6.0.12]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.12, 6.0.12]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.12, 6.0.12]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

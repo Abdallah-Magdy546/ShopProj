@@ -17,61 +17,47 @@
         </p>
     </div>
 </form>
-<table class="table tab-content">
-    <thead>
-        <tr>
-            <th>SubCat</th>
-            <th>
-                <a asp-action="Products" asp-route-name="@ViewBag.SubCategoryName" asp-route-sortOrder="@ViewData["IdSortParm"]">ID</a>
-            </th>
-            <th>
-                <a asp-action="Products" asp-route-name="@ViewBag.SubCategoryName" asp-route-sortOrder="@ViewData["NameSortParm"]">Name</a>
-            </th>
-            <th>
-                <a asp-action="Products" asp-route-name="@ViewBag.SubCategoryName" asp-route-sortOrder="@ViewData["BrandSortParm"]"> Brand </a>
-            </th>
-            <th>
-                <a asp-action="Products" asp-route-name="@ViewBag.SubCategoryName" asp-route-sortOrder="@ViewData["ModelSortParm"]">Model</a>
-            </th>
-            <th> 
-                <a asp-action="Products" asp-route-name="@ViewBag.SubCategoryName" asp-route-sortOrder="@ViewData["PriceSortParm"]">Price</a>
-            </th>
-            <th>Seller Name</th>
-            <th>Production Date</th>
-            <th>Add To Cart</th>
-            <th>Details</th>
-            @if (User.IsInRole("SuperAdmin")||User.IsInRole("Admin"))
-            {
-                <th>Edit</th>
-                <th>Delete</th>
-            }
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(var product in Model)
-        {
-            <tr>
-                <td>@ViewBag.SubCategoryName</td>
-                <td>@product.id</td>
-                <td>@product.name</td>
-                <td>@product.brand</td>
-                <td>@product.model</td>
-                <td>@product.price</td>
-                <td>@product.SellerName</td>
-                <td>@product.ProductionDate</td>
-                <td>
-                    <a class="btn btn-primary" asp-action="AddToCart" asp-area="" asp-controller="Products"
-                   asp-route-ProductId="@product.id" asp-route-name="@ViewBag.SubCategoryName">Add To Cart</a></td>
-                <td><a asp-action="Details" asp-route-id="@product.id" class="btn btn-primary">Details</a></td>
-                @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
-                {
-                    <td><a asp-action="Edit" asp-route-id="@product.id" class="btn btn-warning">Edit</a></td>
-                    <td><a asp-action="Delete" asp-route-id="@product.id" class="btn btn-danger">Delete</a></td>
-                }
-            </tr>
-        }
-    </tbody>
-</table>
+<div>
+    <label for="sort-select">Sort by:</label>
+    <select id="sort-select" onchange="location = this.value;">
+        <option value="@Url.Action("Products", new { name = ViewBag.SubCategoryName, sortOrder = ViewData["IdSortParm"] })">ID</option>
+        <option value="@Url.Action("Products", new { name = ViewBag.SubCategoryName, sortOrder = ViewData["NameSortParm"] })">Name</option>
+        <option value="@Url.Action("Products", new { name = ViewBag.SubCategoryName, sortOrder = ViewData["BrandSortParm"] })">Brand</option>
+        <option value="@Url.Action("Products", new { name = ViewBag.SubCategoryName, sortOrder = ViewData["ModelSortParm"] })">Model</option>
+        <option value="@Url.Action("Products", new { name = ViewBag.SubCategoryName, sortOrder = ViewData["PriceSortParm"] })">Price</option>
+    </select>
+</div>
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="card m-3">
+            <img class="card-img-top" src="data:image;base64,@(Convert.ToBase64String(product.Photo))" alt="Card image cap">
+            <div class="card-body">
+                <div>
+                    <h2>@product.name</h2>
+                </div>
+                <div>
+                    <h5>@product.brand</h5>
+                </div>
+                <div>
+                    <h5>@product.model</h5>
+                </div>
+                <div>
+                    <h5>@product.SellerName</h5>
+                </div>
+                <div>
+                    <h5>@product.ProductionDate</h5>
+                </div>
+                <div>
+                    <h3>@product.price</h3>
+                </div>
+                <a asp-action="Details" asp-route-id="@product.id" class="flex-fill btn btn-outline-primary">View</a>
+                <a class="btn btn-primary" asp-action="AddToCart" asp-area="" asp-controller="Products"
+                  asp-route-ProductId="@product.id" asp-route-name="@ViewBag.SubCategoryName">Add To Cart</a>
+            </div>
+        </div>
+    }
+</div>
 @{
     var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
     var nextDisabled = !Model.HasNextPage ? "disabled" : "";
@@ -99,42 +85,40 @@
     }
           <a asp-action="Index" class="btn btn-primary">Return To Categories</a>
 </div>
+<style>
+    .card {
+        width: 21rem;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+    }
 
-@*-------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------*@
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
 
-@*Products With Jquery DataTable*@
+    .card-body {
+        padding: 10px;
+    }
 
-@*@{
-    ViewData["Title"] = "Products";
-    Layout = "~/Pages/Shared/_Layout.cshtml";
-}
-<link href="~/lib/datatables/css/datatables.bootstrap4.css" rel="stylesheet" />
+    .card-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
 
-<div class="container">
-    <h3 class="text-primary" style="text-align:center">Products</h3>
-    <table id="Products" class="table table-striped table-bordered dt-responsive nowrap">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>name</th>
-                <th>brand</th>
-                <th>model</th>
-                <th>ProductionDate</th>
-                <th>SubCategoryId</th>
-                <th>price</th>
-                <th>SellerName</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-    </table>
-</div>
-@section Scripts
-{
-    <script src="~/lib/datatables/js/jquery.datatables.js"></script>
-    <script src="~/lib/datatables/js/datatables.bootstrap4.js"></script>
-    <script src="~/lib/datatables/js/productsdatatable.js"></script>
-    <script src="~/js/productsdatatable.js"></script>
-}
-*@
+    .card-text {
+        margin-bottom: 15px;
+    }
+
+    .btn-primary {
+        background-color: #f0c14b;
+        border-color: #a88734 #9c7e31 #846a29;
+    }
+
+    .btn-primary:hover {
+        background-color: #f7dfa5;
+        border-color: #a88734 #9c7e31 #846a29;
+    }
+</style>
+

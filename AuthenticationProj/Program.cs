@@ -53,7 +53,7 @@ builder.Services.AddScoped<IProductInterface,ProductsRepo>();
 builder.Services.AddScoped<ICartInterface,CartRepo>();
 builder.Services.AddScoped<IOrderInterface,OrderRepo>();
 
-builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
+//builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Stripe"));
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

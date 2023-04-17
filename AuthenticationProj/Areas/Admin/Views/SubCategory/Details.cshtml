@@ -9,26 +9,30 @@
     The SubCategory Details
 </h1>
 
-<div>
-    <h4>SubCategory</h4>
-    <hr />
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th> ID </th>
-                <th>NAME</th>
-                <th>Category NAME</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@Model.id</td>
-                <td>@Model.name</td>
-                <td>@Model.CatName</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="data:image;base64,@(Convert.ToBase64String(Model.Photo))" alt="Card image cap">
+    <div class="card-body">
+            <div>
+                <h3>ID :</h3>
+                <h5>@Model.id</h5>
+            </div>
+            <div>
+                <h3>NAME :</h3>
+                <h5>@Model.name</h5>
+            </div>
+            <div>
+                <h3>Category :</h3>
+                <h5>@Model.CatName</h5>
+            </div>
+            <div>
+                <h3>NO.Products :</h3>
+                <h5>@ViewBag.productsNo</h5>
+            </div>
+        <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-primary">EDIT</a>
+        <a asp-action="Delete" asp-route-id="@Model.id" class="btn btn-danger">Delete</a>
+    </div>
 </div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
     <a asp-action="Index">Back to List</a>

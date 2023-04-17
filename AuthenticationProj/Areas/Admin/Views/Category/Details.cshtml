@@ -11,29 +11,32 @@
 
 <div>
     <h4>Category</h4>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>NAME</th>
-                <th>Sub Category</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th>@Model.id</th>
-                <th>@Model.name</th>
-                <td>
-                    @foreach (var SubCat in Model.SubCats)
-                    {
-                        <h5>@SubCat</h5>
-                    }
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top"  src="data:image;base64,@(Convert.ToBase64String(Model.Photo))">
+        <div class="card-body">
+            <div class="row">
+                <h3>ID :</h3>
+                <h5 class="card-title">@Model.id</h5>
+            </div>
+            <div class="row">
+                <h3>NAME :</h3>
+                <h5 class="card-title">@Model.name</h5>
+            </div>
+            <div class="row">
+                <h3>NO.SubCategories:</h3>
+                <h5>@ViewBag.NumOfSubCategory</h5>
+            </div>
+            @foreach(var SubCat in Model.SubCats)
+            {
+                <p class="card-text">@SubCat</p>
+            }
+            <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-primary">Edit</a>
+            <a asp-action="Delete" asp-route-id="@Model.id" class="btn btn-primary">Delete</a>
+        </div>
+    </div>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    @*<a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@Model?.id">Delete</a> |*@
     <a asp-action="Index">Back to List</a>
 </div>

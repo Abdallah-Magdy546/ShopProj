@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nQpLu9Rifuu9F58FG4PDe/54rF696HqZ65f98KTxkk8=",
+  "Hash": "TfxgKDnMcg8XcBQDYUgI1BOdnUfSXR3nlT9J9lhlrv8=",
   "Source": "ShopProj",
   "BasePath": "_content/ShopProj",
   "Mode": "Default",
@@ -1103,6 +1103,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\AuthenticationProj\\AuthenticationProj\\wwwroot\\Images\\BackGround.jpg",
+      "SourceId": "ShopProj",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\AuthenticationProj\\AuthenticationProj\\wwwroot\\",
+      "BasePath": "_content/ShopProj",
+      "RelativePath": "Images/BackGround.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\BackGround.jpg"
+    },
+    {
+      "Identity": "D:\\AuthenticationProj\\AuthenticationProj\\wwwroot\\Images\\Logo.png",
+      "SourceId": "ShopProj",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\AuthenticationProj\\AuthenticationProj\\wwwroot\\",
+      "BasePath": "_content/ShopProj",
+      "RelativePath": "Images/Logo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\Logo.png"
     },
     {
       "Identity": "D:\\AuthenticationProj\\AuthenticationProj\\wwwroot\\js\\ProductsDataTable.js",

@@ -5,7 +5,7 @@
 }
 
 
-<form class="form" method="post" asp-action="Create">
+<form class="form" method="post" asp-action="Create" enctype="multipart/form-data">
     <div class="row">
         <label asp-for="name">Name</label>
         <input asp-for="name" class="form-control" />
@@ -31,6 +31,10 @@
         <input asp-for="ProductionDate" class="form-control" />
     </div>
     <div class="row">
+        <label asp-for="Photo">Product Image</label>
+        <input asp-for="Photo" type="file" class="form-control" />
+    </div>
+    <div class="row">
         <label for="SubCAtegoryName" >SubCategory Name</label>
         <select id="SubCAtegoryName" name="SubCategoryName" class="form-select form-select-lg mb-3 mt-1" value="@ViewBag.SubCategoryName">
             @foreach (var SubCategory in ViewBag.SubCategoryiesNames)
@@ -45,6 +49,5 @@
         <button type="submit" class="btn btn-primary m-2">Create Product</button>   | 
         <a asp-action="Products" asp-route-id="@ViewBag.SubCategoryId" class="btn btn-primary m-2">Back to List</a>   |
         <a asp-action="Index" class="btn btn-primary m-2">Return To Categories</a>
-
     </div>
 </form>

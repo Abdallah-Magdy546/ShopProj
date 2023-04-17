@@ -16,7 +16,10 @@
     <PackageReference Include="HelperMethods.HTMLHelper" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.9" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.15" />
+    <PackageReference Include="Microsoft.Crm.Sdk.Proxy.2015" Version="7.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.15" />
+    <PackageReference Include="Microsoft.Xrm.Client.2015" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Xrm.Sdk.2015" Version="7.1.0.1085" />
     <PackageReference Include="Moq.EntityFramework.Helpers" Version="1.0.0" />
     <PackageReference Include="Moq.EntityFrameworkCore" Version="6.0.1.4" />
     <PackageReference Include="Stripe.net" Version="41.13.0" />

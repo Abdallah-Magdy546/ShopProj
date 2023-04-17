@@ -63,6 +63,7 @@ namespace ShopProj.Areas.Admin.Controllers
         public async Task<IActionResult> ManagePermission(string id)
         {
             var role = await _roleManager.FindByIdAsync(id);
+            ViewBag.RoleId = id;
 
             if (role == null)
                 return NotFound();

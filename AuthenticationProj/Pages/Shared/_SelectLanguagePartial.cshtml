@@ -31,7 +31,7 @@
 }
 
 <div title="@localizer["Request culture provider:"] @requstCulture?.Provider?.GetType().Name">
-    <form id="SelectLanguage" method="post" asp-controller="SelectLanguage" asp-action="Index" asp-route-ReturnUrl="@returnUrl">
+    <form class="form-inline my-2 my-lg-0" id="SelectLanguage" method="post" asp-controller="SelectLanguage" asp-action="Index" asp-route-ReturnUrl="@returnUrl">
         <select name="Culture" onchange="this.form.submit();" asp-for="@requstCulture.RequestCulture.UICulture.Name" asp-items="cultureItems">
 
         </select>

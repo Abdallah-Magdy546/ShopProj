@@ -11,5 +11,6 @@ namespace Core.ViewModel
         public int id { get; set; }
         public string name { get; set; }
         public List<string> SubCats { get; set; }
+        public byte[] Photo { get; set; }
     }
 }

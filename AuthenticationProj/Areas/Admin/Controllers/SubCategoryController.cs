@@ -13,11 +13,13 @@ namespace ShopProj.Areas.Admin.Controllers
     {
         private readonly ISubCategoryInterface _subCategory;
         private readonly ICategoryInterface _category;
+        private readonly IProductInterface _product;
 
-        public SubCategoryController(ISubCategoryInterface subCategory, ICategoryInterface category)
+        public SubCategoryController(ISubCategoryInterface subCategory, ICategoryInterface category, IProductInterface products)
         {
             _subCategory = subCategory;
             _category = category;
+            _product = products;
         }
 
         // GET: SubCategoryController
@@ -35,6 +37,7 @@ namespace ShopProj.Areas.Admin.Controllers
                 {
                     id = SubCat.id,
                     name = SubCat.Name,
+                    Photo= SubCat.Photo,
                     CatName = catNames[SubCat.Name]
                 });
             }
@@ -46,13 +49,17 @@ namespace ShopProj.Areas.Admin.Controllers
         public async Task<ActionResult> Details(int id)
         {
             var SubCategory = await _subCategory.GetSubCategoryById(id);
-            var Category = await _subCategory.GetCategoryBySubCategoryId(id);
+            var Category = await _subCategory.GetCategoryNameBySubCategoryId(id);
             var result = new SubCategoriesAndCategoriesForm
             {
                 id = id,
                 name = SubCategory.Name,
-                CatName = Category
+                CatName = Category,
+                Photo=SubCategory.Photo
+                
             };
+            var products = await _product.GetAllProductsBySubCategoryId(id);
+            ViewBag.productsNo = products.Count();
             return View(result);
         }
 
@@ -68,11 +75,21 @@ namespace ShopProj.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Permissions.SubCategories.Create)]
-        public async Task<ActionResult> Create(string name, string CategoryName)
+        public async Task<ActionResult> Create(string name, string CategoryName ,IFormFile Photo)
         {
             var Category = await _category.GetCategoryByName(CategoryName);
             var CategoryId = Category.id;
-            var result = await _subCategory.CreateNewSubCategory(name, CategoryId);
+            var SubCategory = new SubCategory
+            {
+                Name = name,
+                CategoryId = CategoryId
+            };
+            using(var memoryStream = new MemoryStream())
+            {
+                Photo.CopyTo(memoryStream);
+                SubCategory.Photo = memoryStream.ToArray();
+            }
+            var result = await _subCategory.CreateNewSubCategory(SubCategory);
 
             if (result == true)
             {
@@ -87,7 +104,7 @@ namespace ShopProj.Areas.Admin.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             var SubCategory = await _subCategory.GetSubCategoryById(id);
-            var Category = await _subCategory.GetCategoryBySubCategoryId(id);
+            var Category = await _subCategory.GetCategoryNameBySubCategoryId(id);
             var categories = await _category.GetAllCategories();
             List<string> catsNames = new List<string>();
             foreach (var category in categories)
@@ -98,8 +115,8 @@ namespace ShopProj.Areas.Admin.Controllers
             {
                 id = id,
                 name = SubCategory.Name,
-                CatName = Category,
-                CatsNames = catsNames
+                CatsNames = catsNames,
+                Photo= SubCategory.Photo
             };
             return View(result);
         }
@@ -108,7 +125,7 @@ namespace ShopProj.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Permissions.SubCategories.Edit)]
-        public async Task<ActionResult> Edit(int id, string name, string CatName)
+        public async Task<ActionResult> Edit(int id, string name, string CatName , IFormFile Photo)
         {
             var Category = await _category.GetCategoryByName(CatName);
             var CatId = Category.id;
@@ -118,6 +135,11 @@ namespace ShopProj.Areas.Admin.Controllers
                 Name = name,
                 CategoryId = CatId
             };
+            using(var memoryStream = new MemoryStream())
+            {
+                Photo.CopyTo(memoryStream);
+                subCategory.Photo = memoryStream.ToArray();
+            }
             var result = await _subCategory.EditSubCategory(subCategory);
             if (result == true)
             {

@@ -74,5 +74,29 @@ namespace Infrastructure.Data.Repositories
             var product = await _context.products.Where(prd=>prd.name == name).FirstOrDefaultAsync();
             return product;
         }
+
+        public async Task<List<Product>> GetProductsRandomly()
+        {
+            var Categories = await _context.categories.ToListAsync();
+            var SubCategories = new List<SubCategory>();
+            var products = new List<Product>();
+            foreach (var category in Categories)
+            {
+                var subCategory = await _context.subcategories.Where(sub=>sub.CategoryId==category.id).FirstOrDefaultAsync();
+                if(subCategory != null)
+                {
+                    SubCategories.Add(subCategory);
+                }
+            }
+            foreach(var subCategory in SubCategories)
+            {
+                var product = await _context.products.Where(prd=>prd.SubCategoryId==subCategory.id).FirstOrDefaultAsync();
+                if(product != null)
+                {
+                    products.Add(product);
+                }
+            }
+            return products;
+        }
     }
 }

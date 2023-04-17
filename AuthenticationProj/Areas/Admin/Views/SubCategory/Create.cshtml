@@ -4,11 +4,19 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<form class="form" method="post" asp-action="Create">
+<form class="form" method="post" asp-action="Create" enctype="multipart/form-data">
     <div class="input-grup">
-        <input id="Name OF SubCategory" name="name" class="form-control" placeholder="Name OF SubCategory" required />
-        <div class="input-group">
-            <select id="Name of Category" name="CategoryName" class="form-select form-select-lg mb-3 mt-3">
+        <div class="row">
+            <label for="Name OF SubCategory">Name OF SubCategory</label>
+            <input id="Name OF SubCategory" name="name" class="form-control" placeholder="Enter Name" required />
+        </div>
+        <div class="row">
+            <label for="Image">image</label>
+            <input id="Image" name="Photo" placeholder="Image" type="file" class="form-control" required />
+        </div>
+        <div class="row" >
+            <label for="Name of Category">Name of Category</label>
+            <select id="Name of Category" name="CategoryName" class="form-select form-select-lg mb-3">
                 @foreach (var cat in Model)
                 {
                     <option>@cat.Name</option>

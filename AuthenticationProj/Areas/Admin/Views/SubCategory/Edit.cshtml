@@ -4,19 +4,26 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<form class="form" method="post" asp-action="Edit">
+<form class="form" method="post" asp-action="Edit" enctype="multipart/form-data">
     <div class="input-grup">
         <input asp-for="id" type="hidden" value="@Model.id" />
-        <input asp-for="name" class="form-control" placeholder="@Model.name" required />
-        @*<input asp-for="CatName" class="form-control mt-3" placeholder="@Model.CategoryId" required />*@
-        <div class="input-group">
-            <select asp-for="CatName" placeholder="@Model.CatName" class="form-select form-select-lg mb-3 mt-3">
+        <div class="row">
+            <label for="Name OF SubCategory">Name OF SubCategory</label>
+            <input asp-for="name" class="form-control" placeholder="@Model.name" required />
+        </div>
+        <div class="row">
+            <label for="Image">image</label>
+            <input asp-for="Photo" class="form-control mt-3" type="file" required />
+        </div>
+        <div class="row">
+            <label for="Name of Category">Name of Category</label>
+            <select name="CatName" class="form-select form-select-lg mb-3 ">
                 @foreach (var cat in Model.CatsNames)
                 {
                     <option>@cat</option>
                 }
             </select>
-            </div>
+        </div>
         <div class="input-group-append">
             <button type="submit" class="btn btn-primary mt-2">Edit The Category</button>
             <a asp-action="Index" class="btn btn-primary mt-2 ml-2">Back to List</a>
@@ -24,3 +31,6 @@
     </div>
     <span asp-validation-for="name" class="text-danger"></span>
 </form>
+
+
+

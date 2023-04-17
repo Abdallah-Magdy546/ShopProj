@@ -10,6 +10,7 @@ namespace Core.ViewModel
     {
         public int id { get; set; }
         public string name { get; set; }
+        public byte[] Photo { get; set; }
         public string CatName { get; set; }
     }
 }

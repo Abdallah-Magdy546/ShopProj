@@ -14,6 +14,8 @@ namespace Core.Entities
         public int id { get; set; }
         [Required]
         public string Name { get; set; }
+        [Required]
+        public byte[] Photo { get; set; }
 
     }
 }

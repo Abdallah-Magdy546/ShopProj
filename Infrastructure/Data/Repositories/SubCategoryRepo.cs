@@ -3,6 +3,7 @@ using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,19 +19,14 @@ namespace Infrastructure.Data.Repositories
             _context = context;
         }
 
-        public async Task<bool> CreateNewSubCategory(string name  , int CategoryId)
+        public async Task<bool> CreateNewSubCategory(SubCategory subCategory)
         {
-            var SubCat = await _context.subcategories.Where(c=>c.Name == name).FirstOrDefaultAsync();
+            var SubCat = await _context.subcategories.Where(c=>c.Name == subCategory.Name).FirstOrDefaultAsync();
             if (SubCat!=null)
             {
                 return false;
             }
-            var SubCategory = new SubCategory
-            {
-                Name = name,
-                CategoryId = CategoryId
-            };
-            await _context.subcategories.AddAsync(SubCategory);
+            await _context.subcategories.AddAsync(subCategory);
             await _context.SaveChangesAsync();
             return true;
         }
@@ -83,7 +79,7 @@ namespace Infrastructure.Data.Repositories
             var SubCategory = await _context.subcategories.Where(s=>s.Name==name).FirstOrDefaultAsync();
             return SubCategory;
         }
-        public async Task<string> GetCategoryBySubCategoryId (int id)
+        public async Task<string> GetCategoryNameBySubCategoryId (int id)
         {
             var SubCat= await _context.subcategories.FindAsync(id);
             var category = await _context.categories.FindAsync(SubCat.CategoryId);
@@ -124,6 +120,32 @@ namespace Infrastructure.Data.Repositories
         {
             var result = await _context.subcategories.Where(s=>s.CategoryId==id).ToListAsync();
             return result;
+        }
+
+        public async Task<bool> DeleteSubCategoriesByCategroyId(int id)
+        {
+            var SubCategories = await _context.subcategories.Where(s=>s.CategoryId == id).ToListAsync();
+            foreach(var SubCategory in SubCategories)
+            {
+                _context.subcategories.Remove(SubCategory);
+                await _context.SaveChangesAsync();
+            }
+            return true;
+        }
+
+        public async Task<List<SubCategory>> GetSubCategoryRandomly()
+        {
+            List<SubCategory> subCategories = new List<SubCategory>();
+            var categories = await _context.categories.ToListAsync();
+            foreach(var category in categories)
+            {
+                var SubCategory = await _context.subcategories.Where(Sub=>Sub.CategoryId==category.id).FirstOrDefaultAsync();
+                if (SubCategory != null)
+                {
+                    subCategories.Add(SubCategory);
+                }
+            }
+            return subCategories;
         }
     }
 }

@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\ShopProj.bundle.scp.css"
     },
     {
+      "Id": "D:\\AuthenticationProj\\AuthenticationProj\\wwwroot\\Images\\BackGround.jpg",
+      "PackagePath": "staticwebassets\\Images\\BackGround.jpg"
+    },
+    {
+      "Id": "D:\\AuthenticationProj\\AuthenticationProj\\wwwroot\\Images\\Logo.png",
+      "PackagePath": "staticwebassets\\Images\\Logo.png"
+    },
+    {
       "Id": "D:\\AuthenticationProj\\AuthenticationProj\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

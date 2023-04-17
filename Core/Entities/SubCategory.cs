@@ -17,5 +17,7 @@ namespace Core.Entities
         public string Name { get; set; }
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
+        [Required]
+        public byte[] Photo { get; set; }
     }
 }

@@ -12,5 +12,6 @@ namespace Core.ViewModel
         public string ProductName { get; set; }
         public int Quantity { get; set; }
         public string Status { get; set; }
+        public byte[] Photo { get; set; }
     }
 }

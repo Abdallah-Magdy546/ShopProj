@@ -29,7 +29,8 @@ namespace ShopProj.Controllers
                     Id = order.Id,
                     ProductName = product.name,
                     Quantity = order.Quantity,
-                    Status = order.status
+                    Status = order.status,
+                    Photo=product.Photo
                 });
             }
             return View(OrdersView);

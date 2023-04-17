@@ -16,5 +16,6 @@ namespace Core.Interfaces
         Task<bool> DeleteProduct (int id);
         Task<bool> DeleteAllProductsBySubCategoryId(int id);
         Task<Product> GetProductByName (string name);
+        Task<List<Product>> GetProductsRandomly ();
     }
 }

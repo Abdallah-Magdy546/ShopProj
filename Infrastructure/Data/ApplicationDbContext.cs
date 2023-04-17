@@ -17,7 +17,6 @@ namespace Infrastructure.Data
             builder.Entity<ApplicationUser>().ToTable("users");
         }
 
-        public DbSet<student> students { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<SubCategory> subcategories { get; set; }
         public DbSet<Product> products { get; set; }

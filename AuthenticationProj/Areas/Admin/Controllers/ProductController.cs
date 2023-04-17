@@ -112,7 +112,7 @@ namespace ShopProj.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Permissions.Products.Create)]
         public async Task<IActionResult> Create (string name , string model , string brand , float price,
-            string SellerName , DateTime ProductionDate , string SubCategoryName)
+            string SellerName , DateTime ProductionDate , string SubCategoryName , IFormFile Photo)
         {
             var SubCategory = await _subCategory.GetSubCategoryByName(SubCategoryName);
             var product = new Product
@@ -124,6 +124,11 @@ namespace ShopProj.Areas.Admin.Controllers
                 SellerName = SellerName,
                 ProductionDate = ProductionDate,
                 SubCategoryId = SubCategory.id
+            };
+            using(var memoryStream = new MemoryStream())
+            {
+                Photo.CopyTo(memoryStream);
+                product.Photo = memoryStream.ToArray();
             };
             var result = await _product.AddProduct(product);
             if ( result==true)
@@ -145,7 +150,7 @@ namespace ShopProj.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Permissions.Products.Edit)]
         public async Task<IActionResult> Edit(string name , string brand , string model , float price ,
-            string SellerName , DateTime ProductionDate , int id , int SubCategoryId , string SubCategoryName)
+            string SellerName , DateTime ProductionDate , int id , int SubCategoryId , string SubCategoryName, IFormFile Photo)
         {
             var SubCategory = await _subCategory.GetSubCategoryByName(SubCategoryName);
             var product = new Product
@@ -158,6 +163,11 @@ namespace ShopProj.Areas.Admin.Controllers
                 SellerName = SellerName,
                 ProductionDate = ProductionDate,
                 SubCategoryId = SubCategory.id
+            };
+            using (var memoryStream = new MemoryStream())
+            {
+                Photo.CopyTo(memoryStream);
+                product.Photo=memoryStream.ToArray();
             };
             var result = await _product.EditProduct(product);
             if (result == true)

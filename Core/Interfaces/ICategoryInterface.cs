@@ -13,7 +13,7 @@ namespace Core.Interfaces
         Task<List<Category>> GetAllCategories();
         Task<Category> GetCategorieById(int id);
         Task<bool> DeleteCategory(int id);
-        Task<bool> AddCategory(string name);
+        Task<bool> AddCategory(Category category);
         Task<bool> EditCategory(Category category);
         Task<Category> GetCategoryByName(string name);
 

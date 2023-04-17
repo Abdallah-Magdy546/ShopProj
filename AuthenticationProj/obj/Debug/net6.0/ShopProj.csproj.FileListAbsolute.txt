@@ -781,3 +781,7 @@ D:\AuthenticationProj\AuthenticationProj\obj\Debug\net6.0\ShopProj.genruntimecon
 D:\AuthenticationProj\AuthenticationProj\obj\Debug\net6.0\ref\ShopProj.dll
 D:\AuthenticationProj\AuthenticationProj\bin\Debug\net6.0\Stripe.net.dll
 D:\AuthenticationProj\AuthenticationProj\obj\Debug\net6.0\ShopProj.MvcApplicationPartsAssemblyInfo.cs
+D:\AuthenticationProj\AuthenticationProj\bin\Debug\net6.0\Microsoft.Crm.Sdk.Proxy.dll
+D:\AuthenticationProj\AuthenticationProj\bin\Debug\net6.0\Microsoft.Xrm.Client.dll
+D:\AuthenticationProj\AuthenticationProj\bin\Debug\net6.0\Microsoft.Xrm.Sdk.dll
+D:\AuthenticationProj\AuthenticationProj\bin\Debug\net6.0\Microsoft.Xrm.Sdk.Deployment.dll
