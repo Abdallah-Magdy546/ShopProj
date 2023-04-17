@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YP4kgX8qiWxl+cgOowqm+Qbdf6WCM9iGwEziVNPHCCHlV0ACYKo2G/WfAXs0rv843xAXeTCUHEdALdmvM3SyBA==",
+  "dgSpecHash": "SZA4iwU+DFb/ywXdOn3tnaXmxaouCzsivLosJASEKZlBpTWt8+LytYNrFnnt0Ypc1zOXOjlLzPdsWKcn+Xiykg==",
   "success": true,
-  "projectFilePath": "D:\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "E:\\AuthenticationProj\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdal\\.nuget\\packages\\castle.core\\5.0.0\\castle.core.5.0.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\entityframework\\6.1.3\\entityframework.6.1.3.nupkg.sha512",
@@ -121,10 +121,7 @@
     "C:\\Users\\abdal\\.nuget\\packages\\system.threading\\4.0.11\\system.threading.4.0.11.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\system.threading.tasks\\4.0.11\\system.threading.tasks.4.0.11.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.12\\microsoft.windowsdesktop.app.ref.6.0.12.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.12\\microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.12\\microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512"
+    "C:\\Users\\abdal\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
   "logs": [
     {

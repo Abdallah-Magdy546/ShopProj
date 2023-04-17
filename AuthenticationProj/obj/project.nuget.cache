@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lMpffRIJNhKk1jJngAafMJQZKwZtZDa582fUnIkgqboGr4nwjeuLj2FSrghe9Jb5DW2ednQ9ejCfsS4HKlMpuQ==",
+  "dgSpecHash": "fXRSh85Td4aqmhB9m8LoEt8leDj8DnTeKkir3exCYfcvB0D5I+0w6LFCCAmQFecJpRLn05/LX0bgLBQo+NkzDw==",
   "success": true,
-  "projectFilePath": "D:\\AuthenticationProj\\AuthenticationProj\\ShopProj.csproj",
+  "projectFilePath": "E:\\AuthenticationProj\\AuthenticationProj\\ShopProj.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\abdal\\.nuget\\packages\\castle.core\\5.0.0\\castle.core.5.0.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\entityframework\\6.1.3\\entityframework.6.1.3.nupkg.sha512",
@@ -224,11 +224,7 @@
     "C:\\Users\\abdal\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\abdal\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.12\\microsoft.windowsdesktop.app.ref.6.0.12.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.12\\microsoft.netcore.app.ref.6.0.12.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.12\\microsoft.aspnetcore.app.ref.6.0.12.nupkg.sha512",
-    "C:\\Users\\abdal\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.12\\microsoft.netcore.app.host.win-x64.6.0.12.nupkg.sha512"
+    "C:\\Users\\abdal\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
     {
